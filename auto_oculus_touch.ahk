@@ -105,6 +105,7 @@ Func_initOculus := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "initOcul
 Func_poll := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "poll", "Ptr")
 Func_isWearing := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "isWearing", "Ptr")
 Func_isPressed := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "isPressed", "Ptr")
+Func_isLongPressed := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "isLongPressed", "Ptr")
 Func_isReleased := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "isReleased", "Ptr")
 Func_isDown := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "isDown", "Ptr")
 Func_isTouchPressed := DllCall("GetProcAddress", "Ptr", AOTModule, "AStr", "isTouchPressed", "Ptr")
@@ -158,6 +159,12 @@ IsPressed(button)
 {
 	global Func_isPressed
     return DllCall(Func_isPressed, "UInt", button)
+}
+
+IsLongPressed(button)
+{
+	global Func_isLongPressed
+    return DllCall(Func_isLongPressed, "UInt", button)
 }
 
 IsReleased(button)

@@ -307,6 +307,23 @@ extern "C"
 		return 0;
 	}
 
+	__declspec(dllexport) unsigned int isLongPressed(unsigned int button)
+	{
+		if ((g_HMD) && (g_touchState.Buttons & ~g_touchStateLast.Buttons) & button)
+		{
+			for (int kami=0; kami <50; kami++) {
+				if ((g_touchState.Buttons & button) == 0)
+					return 0;
+				poll();
+				Sleep(10);
+			}
+			return 1;
+		}
+		return 0;
+	}
+
+
+
 	__declspec(dllexport) unsigned int isReleased(unsigned int button)
 	{
 		if (g_HMD)
